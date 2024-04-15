@@ -1,0 +1,15 @@
+﻿  Window.cpp
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.h(12,36): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+  (compilando archivo de origen "Window.cpp")
+  
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+  (compilando archivo de origen "Window.cpp")
+  
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.cpp(363,22): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.cpp(364,22): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.cpp(368,28): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.cpp(369,40): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.cpp(371,21): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.cpp(372,21): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\P5\Window.cpp(87): warning C4715: 'Window::Initialise': no todas las rutas de acceso de control devuelven un valor
+  P5.vcxproj -> C:\Users\Max\Documents\LabCGeiHC 2024-2\P5\Debug\P5.exe
