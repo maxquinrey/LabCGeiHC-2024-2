@@ -287,21 +287,29 @@ int main()
 		0.3f, 0.3f,
 		0.0f, 0.0f, -1.0f);   //0,0,-1
 
+	//------------------------*POINTLIGHT*-------------------------------
+
+
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
 	//Declaración de primer luz puntual
+	//SE RETIRA PARA TENER LAS NECESARIAS SOLAMENTE
+	/*
 	pointLights[0] = PointLight(0.0f, 0.0f, 0.0f,
 		0.0f, 1.0f,
 		-6.0f, 1.5f, 1.5f,
 		0.3f, 0.2f, 0.1f);
 	pointLightCount++;
+	//*/
 
 	// Ligada al modelo de lampara
-	pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
+	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
 		0.5f, 0.3f,
 		0.0f, 0.0f, 0.0f,
 		0.2f, 0.01f, 0.001f);
 	pointLightCount++;
+
+	//------------------------*SPOTLIGHT*-------------------------------
 
 	unsigned int spotLightCount = 0;
 	//linterna
@@ -313,7 +321,8 @@ int main()
 		5.0f);
 	spotLightCount++;
 
-	
+	//SE RETIRA ESTA LUZ
+	/*
 	//luz fija
 	spotLights[1] = SpotLight(0.0f, 0.0f, 0.0f,
 		1.0f, 2.0f,
@@ -322,10 +331,18 @@ int main()
 		1.0f, 0.0f, 0.0f,
 		15.0f);
 	spotLightCount++;
-	
+	*/
 	
 	//se crean mas luces puntuales y spotlight 
 	//...
+
+	spotLights[1] = SpotLight(0.0f, 0.0f, 1.0f,  //ligado al coche
+		1.0f, 2.0f,
+		5.0f, 10.0f, 0.0f,
+		0.0f, -5.0f, 0.0f,
+		0.5f, 0.01f, 0.001f,
+		15.0f);  //angulo de apertura del cono
+	spotLightCount++;
 
 	spotLights[2] = SpotLight(0.0f, 0.0f, 1.0f,  //ligado al coche
 		1.0f, 2.0f,
@@ -335,17 +352,9 @@ int main()
 		15.0f);  //angulo de apertura del cono
 	spotLightCount++;
 
-	spotLights[3] = SpotLight(0.0f, 0.0f, 1.0f,  //ligado al coche
-		1.0f, 2.0f,
-		5.0f, 10.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		0.5f, 0.01f, 0.001f,
-		15.0f);  //angulo de apertura del cono
-	spotLightCount++;
-
 	// Inicialización de la luz spotlight indexada en 4
 	// Ligada al modelo del helicóptero
-	spotLights[4] = SpotLight( 1.0f, 1.0f, 0.0f, 		// Color de la luz (RGB)
+	spotLights[3] = SpotLight( 1.0f, 1.0f, 0.0f, 		// Color de la luz (RGB)
 		0.5f, 0.5f, //Intensidad Ambienteal, Intensidad Difusa
 		5.0f, 10.0f, 0.0f, //Posicion
 		0.0f, -5.0f, 0.0f, //Direccion
@@ -357,7 +366,7 @@ int main()
 	//Esta luz no se emplea pero tambien se tiene un resultado satisfactorio para la lámpara
 	/*
 	// Ligada al modelo de lampara
-	spotLights[5] = SpotLight(1.0f, 1.0f, 1.0f, 		// Color de la luz (RGB)
+	spotLights[4] = SpotLight(1.0f, 1.0f, 1.0f, 		// Color de la luz (RGB)
 		1.0f, 1.0f, //Intensidad Ambienteal, Intensidad Difusa
 		5.0f, 10.0f, 6.0f, //Posicion
 		0.0f, -1.0f, 0.1f, //Direccion
@@ -415,6 +424,8 @@ int main()
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
+		
+		//SE COMENTA LA LUZ DEL FLASH SOLO PARA PODER VISUALIZAR LAS OTRAS LUCES DE MANERA CORRECTA
 		/*
 		// luz ligada a la cámara de tipo flash
 		//sirve para que en tiempo de ejecución (dentro del while) se cambien propiedades de la luz
@@ -463,13 +474,13 @@ int main()
 		// Obtener la posición de la cabina después de renderizarla
 		glm::vec3 faro_1 = glm::vec3(model[3][0]+3.2f, model[3][1]+2.3f, model[3][2]+5.0f); // <- con esto hacemos que la luz siga al modelo
 		// Configurar la posición y la dirección de la luz
-		spotLights[2].SetFlash(faro_1, cabinaDirection);
+		spotLights[1].SetFlash(faro_1, cabinaDirection);
 
 		//LUZ 2 ----- FARO 2
 		// Obtener la posición de la cabina después de renderizarla
 		glm::vec3 faro_2 = glm::vec3(model[3][0] - 3.2f, model[3][1] + 2.3f, model[3][2] + 5.0f); // <- con esto hacemos que la luz siga al modelo
 		// Configurar la posición y la dirección de la luz
-		spotLights[3].SetFlash(faro_2, cabinaDirection);
+		spotLights[2].SetFlash(faro_2, cabinaDirection);
 
 
 		//Cofre
@@ -574,7 +585,7 @@ int main()
 		// Obtener la posición de la cabina después de renderizarla
 		glm::vec3 centro = glm::vec3(model[3][0] + 0.0f, model[3][1] + 0.0f, model[3][2] + 0.0f); // <- con esto hacemos que la luz siga al modelo
 		// Configurar la posición y la dirección de la luz
-		spotLights[4].SetFlash(centro, HelicopteroDirection);
+		spotLights[3].SetFlash(centro, HelicopteroDirection);
 		
 		//Aspa Principal
 		model = model_helicopter;
@@ -603,7 +614,7 @@ int main()
 		// Obtener la posición de la cabina después de renderizarla
 		glm::vec3 lampPos = glm::vec3(model[3][0] + 0.0f, model[3][1] + 22.0f, model[3][2] + 0.0f); // <- con esto hacemos que la luz siga al modelo
 		// Configurar la posición y la dirección de la luz
-		pointLights[1].SetPosition(lampPos);
+		pointLights[0].SetPosition(lampPos);
 
 
 		//------------*INICIA DIBUJO DE Agave-------------------*

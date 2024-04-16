@@ -188,29 +188,29 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	if (key == GLFW_KEY_B)
 	{
 		theWindow->mover_helicoptero += 1.0;
-		theWindow->rotacionAspa += 10.0;
-		theWindow->rotacionAspa_corta += 10.0;
+		theWindow->rotacionAspa += 40.0;
+		theWindow->rotacionAspa_corta += 40.0;
 	}
 
 	if (key == GLFW_KEY_V)
 	{
 		theWindow->mover_helicoptero -= 1.0;
-		theWindow->rotacionAspa -= 10.0;
-		theWindow->rotacionAspa_corta -= 10.0;
+		theWindow->rotacionAspa -= 40.0;
+		theWindow->rotacionAspa_corta -= 40.0;
 	}
 
 	if (key == GLFW_KEY_N)
 	{
 		theWindow->elevar_helicoptero += 1.0;
-		theWindow->rotacionAspa += 10.0;
-		theWindow->rotacionAspa_corta += 10.0;
+		theWindow->rotacionAspa += 40.0;
+		theWindow->rotacionAspa_corta += 40.0;
 	}
 
 	if (key == GLFW_KEY_M)
 	{
 		theWindow->elevar_helicoptero -= 1.0;
-		theWindow->rotacionAspa -= 10.0;
-		theWindow->rotacionAspa_corta -= 10.0;
+		theWindow->rotacionAspa -= 40.0;
+		theWindow->rotacionAspa_corta -= 40.0;
 	}
 
 
